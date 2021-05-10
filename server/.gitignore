@@ -1,0 +1,5 @@
+#Lock files
+*.lock
+
+# Dependency directories
+node_modules
