@@ -9,3 +9,6 @@ node_modules
 !.vscode/snippets
 !.vscode/launch.json
 !.vscode/settings.json
+
+#Environment variable
+.env

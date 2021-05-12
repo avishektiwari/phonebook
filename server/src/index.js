@@ -1,9 +1,13 @@
 import express from "express";
 import { json, urlencoded } from "body-parser";
-import db from "./queries";
+
+import config from "./env";
+import { privateRouter, publicRouter } from "./routes";
 
 const app = express();
-const port = 3000;
+
+const port = config.app.port;
+const host = config.app.host;
 
 app.use(json());
 app.use(
@@ -12,8 +16,9 @@ app.use(
   })
 );
 
-app.get("/users", db.getUsers);
+app.use("/api", publicRouter);
+app.use("/api", privateRouter);
 
-app.listen(port, () => {
-  console.log(`App running on port ${port}.`);
+app.listen(port, host, () => {
+  console.log(`App running at http://${host}:${port}/api`);
 });
